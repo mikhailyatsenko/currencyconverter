@@ -2,7 +2,12 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        sm: "427px",
+        // => @media (min-width: 992px) { ... }
+      },
+    },
   },
   plugins: [],
 };

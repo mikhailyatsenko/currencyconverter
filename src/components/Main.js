@@ -11,14 +11,15 @@ function Main(props) {
           <div>
             <p className="text-base text-center pb-1">To convert currency write for expamle "15 eur in uah"</p>
 
-            <form className="flex justify-center" onSubmit={props.convertRequest}>
+            <form className="flex justify-center flex-wrap" onSubmit={props.convertRequest}>
               <input
+                required
                 type="text"
                 id="converter"
-                className="w-50 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-lg outline-none text-gray-700 py-1 px-3 leading-[2.1rem] transition-colors duration-200 ease-in-out"
+                className="bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-lg outline-none text-gray-700 py-1 px-3 leading-[2.1rem] transition-colors duration-200 ease-in-out"
               />
 
-              <button className="text-white bg-indigo-500 border-0 py-2 px-8 mx-1 focus:outline-none hover:bg-indigo-600 rounded text-lg">Convert</button>
+              <button className="text-white bg-indigo-500 border-0 py-2 px-8 mx-1 sm:my-0 my-2 focus:outline-none hover:bg-indigo-600 rounded text-lg">Convert</button>
             </form>
           </div>
         )}
