@@ -38,7 +38,7 @@ function Rates(props) {
           </div>
         )}
         <Link className="font-bold text-indigo-500 hover:text-indigo-400 mt-2" to="/">
-          <p>←back to Crrency Converter </p>
+          <p>←back to Currency Converter </p>
         </Link>
       </div>
     </section>
