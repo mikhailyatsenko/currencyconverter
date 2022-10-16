@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 function Rates(props) {
   return (
-    <section className="text-gray-600 body-font">
-      <div className="container px-5 py-24 mx-auto text-center">
+    <section className="height100 flex items-center text-gray-600 body-font">
+      <div className="container mx-auto text-center">
         <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Rates</h1>
         <h3 className="text-xl font-medium title-font text-gray-900">Choose base currency</h3>
 

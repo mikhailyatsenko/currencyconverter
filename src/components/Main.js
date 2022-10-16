@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 function Main(props) {
   return (
-    <section className="text-gray-600 body-font">
-      <div className="container px-5 py-24 mx-auto text-center">
+    <section className="height100 flex items-center text-gray-600 body-font">
+      <div className="container mx-auto text-center">
         <div className="flex flex-col text-center w-full">
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Currency Converter</h1>
         </div>
