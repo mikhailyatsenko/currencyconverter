@@ -33,7 +33,7 @@ function RatesLoader() {
   }
 
   function sendRequestToBackend() {
-    let url = `http://localhost:3001/rates?to=${mainCurrency}`;
+    let url = `https://vast-hollows-60031.herokuapp.com/rates?to=${mainCurrency}`;
     fetch(url)
       .then((response) => response.json())
       .then((response) => {
