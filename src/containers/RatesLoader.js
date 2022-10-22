@@ -9,7 +9,7 @@ function RatesLoader() {
   useEffect(() => {
     setIsLoading(true);
     getRateFromLs();
-  }, [mainCurrency, getRateFromLs]);
+  }, [mainCurrency]);
 
   function changeMainCurrency(event) {
     setMainCurrency(event.target.value);
