@@ -23,6 +23,13 @@ function Main(props) {
 
   return (
     <section className="height100 flex items-center text-gray-600 body-font">
+      {props.isLoading && (
+        <div className="load-bar">
+          <div className="bar"></div>
+          <div className="bar"></div>
+          <div className="bar"></div>
+        </div>
+      )}
       <div className="container mx-auto text-center">
         <div className="flex flex-col text-center w-full">
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Currency Converter</h1>
@@ -60,7 +67,7 @@ function Main(props) {
               type="number"
               id="converter"
               size="7"
-              className="mr-1  border border-x-0 border-t-0 border-gray-300 focus:bg-transparent focus:ring-indigo-200 outline-none text-gray-700 py-1 px-3 transition-colors duration-200 ease-in-out cursor-default"
+              className="mr-1 border border-x-0 border-t-0 border-gray-300 focus:ring-indigo-200 outline-none text-gray-700 py-1 px-3 transition-colors duration-200 ease-in-out cursor-default"
             />
             <select ref={toCurrency} onChange={getAndSendData} id="currencies" className="max-w-fit border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 bg-indigo-200">
               <option value="USD">USD</option>

@@ -22,11 +22,12 @@ function Converter() {
       return sendToBackend(from, to, fromAmount);
     }
     console.log("взято из ЛС", Math.round(rateFromLs.rate * fromAmount * 1000) / 1000);
+    setIsLoading(false);
     return setOutput(Math.round(rateFromLs.rate * fromAmount * 1000) / 1000);
   }
 
   function sendToBackend(from, to, fromAmount) {
-    const url = `http://localhost:3001?from=${from}&to=${to}`;
+    const url = `https://vast-hollows-60031.herokuapp.com?from=${from}&to=${to}`;
     fetch(url)
       .then((response) => response.json())
       .then((response) => {
@@ -41,7 +42,7 @@ function Converter() {
     let keyName = from + to;
     const data = {
       rate: rate,
-      ttl: Date.now() + 3600000, //saving rate in LS for an hour
+      ttl: Date.now() + 1800000, //saving rate in LS for 30 min
     };
     localStorage.setItem(keyName, JSON.stringify(data));
   }
