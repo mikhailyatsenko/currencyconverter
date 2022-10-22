@@ -45,7 +45,6 @@ function Main(props) {
               required
               autoFocus
               autoComplete="off"
-              type="tel"
               id="converter"
               size="7"
               className="mr-1 bg-gray-100 bg-opacity-50 border border-x-0 border-t-0 border-gray-300 focus:bg-transparent focus:ring-indigo-200 outline-none text-gray-700 py-1 px-3 transition-colors duration-200 ease-in-out"
@@ -58,17 +57,7 @@ function Main(props) {
             </select>
           </div>
           <div className="py-1 flex justify-center flex-wrap">
-            <input
-              value={props.output}
-              ref={toAmount}
-              required
-              readOnly
-              placeholder="to"
-              type="number"
-              id="converter"
-              size="7"
-              className="mr-1 border border-x-0 border-t-0 border-gray-300 focus:ring-indigo-200 outline-none text-gray-700 py-1 px-3 transition-colors duration-200 ease-in-out cursor-default"
-            />
+            <input value={props.output} ref={toAmount} readOnly placeholder="to" id="converter" size="7" className="mr-1 border border-x-0 border-t-0 border-gray-300 focus:ring-indigo-200 outline-none text-gray-700 py-1 px-3 transition-colors duration-200 ease-in-out cursor-default" />
             <select ref={toCurrency} onChange={getAndSendData} id="currencies" className="max-w-fit border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 bg-indigo-200">
               <option value="USD">USD</option>
               <option value="EUR">EUR</option>
