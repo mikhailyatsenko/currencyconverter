@@ -8,44 +8,15 @@ function RatesLoader() {
 
   useEffect(() => {
     setIsLoading(true);
-    getRateFromLs();
 
-    function getRateFromLs() {
-      let keyName = "ratesTo" + mainCurrency;
-      const data = localStorage.getItem(keyName);
-      if (!data) {
-        return sendRequestToBackend();
-      }
-      const ratesFromLs = JSON.parse(data);
-      if (Date.now() > ratesFromLs.ttl) {
-        localStorage.removeItem(keyName);
-        return sendRequestToBackend();
-      }
-      console.log("получаем курсы валют из локал сторадж", ratesFromLs.rates);
-      setIsLoading(false);
-      return setOutputRates(ratesFromLs.rates);
-    }
-
-    function sendRequestToBackend() {
-      let url = `https://vast-hollows-60031.herokuapp.com/rates?to=${mainCurrency}`;
-      fetch(url)
-        .then((response) => response.json())
-        .then((response) => {
-          console.log("получаем курсы валют с бекэнда", response);
-          saveRatesToLs(response);
-          setOutputRates(response);
-          setIsLoading(false);
-        });
-    }
-
-    function saveRatesToLs(response) {
-      let keyName = "ratesTo" + mainCurrency;
-      const data = {
-        rates: response,
-        ttl: Date.now() + 1800000, //saving rate in LS for 30 min
-      };
-      localStorage.setItem(keyName, JSON.stringify(data));
-    }
+    let url = `https://vast-hollows-60031.herokuapp.com/rates?to=${mainCurrency}`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((response) => {
+        console.log("получаем курсы валют с бекэнда", response);
+        setOutputRates(response);
+        setIsLoading(false);
+      });
   }, [mainCurrency]);
 
   function changeMainCurrency(event) {

@@ -7,23 +7,7 @@ function Converter() {
 
   function convertRequest(currencyData) {
     setIsLoading(true);
-    getRateFromLs(currencyData.fromCurrency, currencyData.toCurrency, currencyData.fromAmount);
-  }
-
-  function getRateFromLs(from, to, fromAmount) {
-    let keyName = from + to;
-    const data = localStorage.getItem(keyName);
-    if (!data) {
-      return sendToBackend(from, to, fromAmount);
-    }
-    const rateFromLs = JSON.parse(data);
-    if (Date.now() > rateFromLs.ttl) {
-      localStorage.removeItem(keyName);
-      return sendToBackend(from, to, fromAmount);
-    }
-    console.log("взято из ЛС", Math.round(rateFromLs.rate * fromAmount * 1000) / 1000);
-    setIsLoading(false);
-    return setOutput(Math.round(rateFromLs.rate * fromAmount * 1000) / 1000);
+    sendToBackend(currencyData.fromCurrency, currencyData.toCurrency, currencyData.fromAmount);
   }
 
   function sendToBackend(from, to, fromAmount) {
@@ -32,19 +16,9 @@ function Converter() {
       .then((response) => response.json())
       .then((response) => {
         console.log("ответ от бекенда", response);
-        saveRateToLs(from, to, response.rate);
         setOutput(Math.round(response.rate * fromAmount * 1000) / 1000);
         setIsLoading(false);
       });
-  }
-
-  function saveRateToLs(from, to, rate) {
-    let keyName = from + to;
-    const data = {
-      rate: rate,
-      ttl: Date.now() + 1800000, //saving rate in LS for 30 min
-    };
-    localStorage.setItem(keyName, JSON.stringify(data));
   }
 
   return <Main convertRequest={convertRequest} output={output} isLoading={isLoading} />;
