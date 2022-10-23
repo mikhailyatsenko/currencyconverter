@@ -10,15 +10,13 @@ function Converter() {
     sendToBackend(currencyData.fromCurrency, currencyData.toCurrency, currencyData.fromAmount);
   }
 
-  function sendToBackend(from, to, fromAmount) {
+  async function sendToBackend(from, to, fromAmount) {
     const url = `https://vast-hollows-60031.herokuapp.com?from=${from}&to=${to}`;
-    fetch(url)
-      .then((response) => response.json())
-      .then((response) => {
-        console.log("ответ от бекенда", response);
-        setOutput(Math.round(response.rate * fromAmount * 1000) / 1000);
-        setIsLoading(false);
-      });
+    let response = await fetch(url);
+    let result = await response.json();
+    console.log("ответ от бекенда", result);
+    setOutput(Math.round(result.rate * fromAmount * 1000) / 1000);
+    setIsLoading(false);
   }
 
   return <Main convertRequest={convertRequest} output={output} isLoading={isLoading} />;
