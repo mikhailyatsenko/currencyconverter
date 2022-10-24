@@ -9,7 +9,7 @@ function RatesLoader() {
   useEffect(() => {
     setIsLoading(true);
 
-    let url = `https://vast-hollows-60031.herokuapp.com/rates?to=${mainCurrency}`;
+    let url = `http://localhost:3001/rates?to=${mainCurrency}`;
     fetch(url)
       .then((response) => response.json())
       .then((response) => {
@@ -21,7 +21,7 @@ function RatesLoader() {
 
   function changeMainCurrency(event) {
     setMainCurrency(event.target.value);
-    console.log(event.target.value);
+    console.log("отправляем на бэк", event.target.value);
   }
 
   return <Rates outputRates={outputRates} changeMainCurrency={changeMainCurrency} isLoading={isLoading} />;
