@@ -5,5 +5,5 @@ This converter have feature: caching in backend recently used currencies for an 
 # Stack:
 - react-create-app
 - Tailwind CSS
-- Node.js (backend repository: https://github.com/mikhailyatsenko/currencyconverter-backend)
+- Express.js (backend repository: https://github.com/mikhailyatsenko/currencyconverter-backend)
 - cross-browser
