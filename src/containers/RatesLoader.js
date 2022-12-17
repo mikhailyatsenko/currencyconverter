@@ -9,7 +9,7 @@ function RatesLoader() {
   useEffect(() => {
     setIsLoading(true);
 
-    let url = `http://localhost:3001/rates?to=${mainCurrency}`;
+    let url = `http://54.175.19.77:3001/rates?to=${mainCurrency}`;
     fetch(url)
       .then((response) => response.json())
       .then((response) => {

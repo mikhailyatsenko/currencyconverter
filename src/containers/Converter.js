@@ -11,7 +11,7 @@ function Converter() {
   }
 
   async function sendToBackend(from, to, fromAmount) {
-    const url = `http://localhost:3001?from=${from}&to=${to}`;
+    const url = `http://54.175.19.77:3001?from=${from}&to=${to}`;
     let response = await fetch(url);
     let result = await response.json();
     console.log("пришло от бекенда", result);
